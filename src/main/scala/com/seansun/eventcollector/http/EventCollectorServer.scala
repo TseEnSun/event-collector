@@ -1,14 +1,14 @@
 package com.seansun.eventcollector.http
 
 import cats.effect.{Async, Resource}
-import cats.syntax.all.*
-import com.comcast.ip4s.*
+import cats.syntax.all._
+import com.comcast.ip4s._
 import com.seansun.eventcollector.services.{HelloWorld, Jokes}
 import com.seansun.eventcollector.http.routes.EventCollectorRoutes
 import fs2.Stream
 import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.ember.server.EmberServerBuilder
-import org.http4s.implicits.*
+import org.http4s.implicits._
 import org.http4s.server.middleware.Logger
 
 object EventCollectorServer:

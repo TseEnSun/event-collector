@@ -1,7 +1,7 @@
 package com.seansun.eventcollector.http.routes
 
 import cats.effect.Sync
-import cats.implicits.*
+import cats.implicits._
 import com.seansun.eventcollector.services.{HelloWorld, Jokes}
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl

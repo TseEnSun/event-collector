@@ -9,6 +9,7 @@ import org.http4s.client.Client
 import org.http4s.client.dsl.Http4sClientDsl
 import org.http4s.circe._
 import org.http4s.Method._
+
 trait Jokes[F[_]]:
   def get: F[Jokes.Joke]
 
@@ -26,7 +27,7 @@ object Jokes:
 
   def impl[F[_]: Concurrent](C: Client[F]): Jokes[F] = new Jokes[F]:
     val dsl = new Http4sClientDsl[F]{}
-    import dsl.*
+    import dsl._
     def get: F[Jokes.Joke] = 
       C.expect[Joke](GET(uri"https://icanhazdadjoke.com/"))
         .adaptError{ case t => JokeError(t)} // Prevent Client Json Decoding Failure Leaking

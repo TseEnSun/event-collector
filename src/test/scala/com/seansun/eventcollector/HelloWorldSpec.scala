@@ -1,10 +1,10 @@
 package com.seansun.eventcollector
 
 import cats.effect.IO
-import com.seansun.eventcollector.services.HelloWorld
-import org.http4s.*
-import org.http4s.implicits.*
+import org.http4s._
+import org.http4s.implicits._
 import munit.CatsEffectSuite
+import com.seansun.eventcollector.services.HelloWorld
 
 class HelloWorldSpec extends CatsEffectSuite:
 
