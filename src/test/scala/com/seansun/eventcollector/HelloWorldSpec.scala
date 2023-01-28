@@ -1,8 +1,9 @@
 package com.seansun.eventcollector
 
 import cats.effect.IO
-import org.http4s._
-import org.http4s.implicits._
+import com.seansun.eventcollector.services.HelloWorld
+import org.http4s.*
+import org.http4s.implicits.*
 import munit.CatsEffectSuite
 
 class HelloWorldSpec extends CatsEffectSuite:
@@ -18,4 +19,4 @@ class HelloWorldSpec extends CatsEffectSuite:
   private[this] val retHelloWorld: IO[Response[IO]] = 
     val getHW = Request[IO](Method.GET, uri"/hello/world")
     val helloWorld = HelloWorld.impl[IO]
-    EventcollectorRoutes.helloWorldRoutes(helloWorld).orNotFound(getHW)
+    EventCollectorRoutes.helloWorldRoutes(helloWorld).orNotFound(getHW)

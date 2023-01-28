@@ -1,15 +1,17 @@
-package com.seansun.eventcollector
+package com.seansun.eventcollector.http
 
 import cats.effect.{Async, Resource}
-import cats.syntax.all._
-import com.comcast.ip4s._
+import cats.syntax.all.*
+import com.comcast.ip4s.*
+import com.seansun.eventcollector.services.{HelloWorld, Jokes}
+import com.seansun.eventcollector.http.routes.EventCollectorRoutes
 import fs2.Stream
 import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.ember.server.EmberServerBuilder
-import org.http4s.implicits._
+import org.http4s.implicits.*
 import org.http4s.server.middleware.Logger
 
-object EventcollectorServer:
+object EventCollectorServer:
 
   def stream[F[_]: Async]: Stream[F, Nothing] = {
     for {
@@ -22,8 +24,8 @@ object EventcollectorServer:
       // want to extract a segments not checked
       // in the underlying routes.
       httpApp = (
-        EventcollectorRoutes.helloWorldRoutes[F](helloWorldAlg) <+>
-        EventcollectorRoutes.jokeRoutes[F](jokeAlg)
+        EventCollectorRoutes.helloWorldRoutes[F](helloWorldAlg) <+>
+        EventCollectorRoutes.jokeRoutes[F](jokeAlg)
       ).orNotFound
 
       // With Middlewares in place

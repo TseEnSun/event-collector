@@ -1,11 +1,12 @@
-package com.seansun.eventcollector
+package com.seansun.eventcollector.http.routes
 
 import cats.effect.Sync
-import cats.implicits._
+import cats.implicits.*
+import com.seansun.eventcollector.services.{HelloWorld, Jokes}
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 
-object EventcollectorRoutes:
+object EventCollectorRoutes:
 
   def jokeRoutes[F[_]: Sync](J: Jokes[F]): HttpRoutes[F] =
     val dsl = new Http4sDsl[F]{}

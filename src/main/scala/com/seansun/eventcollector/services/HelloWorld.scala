@@ -1,4 +1,4 @@
-package com.seansun.eventcollector
+package com.seansun.eventcollector.services
 
 import cats.Applicative
 import cats.implicits._
